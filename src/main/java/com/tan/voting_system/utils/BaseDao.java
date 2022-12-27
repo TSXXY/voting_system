@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 /**
+ * 使用阿帕奇提供的数据库封装类dbutils进行业务划分的封装
  * @author TanShan
  * @date 2022/12/27 21:02
  */

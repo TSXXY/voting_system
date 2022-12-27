@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.lang.reflect.Method;
 
 /**
+ * 使用反射对servlet进行封装
  * @author TanShan
  * @date 2022/12/27 21:02
  */

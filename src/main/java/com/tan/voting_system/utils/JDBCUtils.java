@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 /**
+ * 对数据库的连接进行封装
  * @author TanShan
  * @date 2022/12/27 21:02
  */
