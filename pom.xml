@@ -25,6 +25,12 @@
             <version>5.0.0</version>
             <scope>provided</scope>
         </dependency>
+        <!--数据库工具包-->
+        <dependency>
+            <groupId>commons-dbutils</groupId>
+            <artifactId>commons-dbutils</artifactId>
+            <version>1.7</version>
+        </dependency>
         <!--Bean处理工具包-->
         <dependency>
             <groupId>commons-beanutils</groupId>
