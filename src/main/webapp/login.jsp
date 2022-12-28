@@ -31,14 +31,6 @@
             font-size: 16px;
         }
 
-        .close {
-            background-color: white;
-            border: none;
-            font-size: 18px;
-            margin-left: 410px;
-            margin-top: -10px;
-        }
-
         .layui-input {
             border-radius: 5px;
             width: 300px;
@@ -50,11 +42,6 @@
             margin-left: -20px;
         }
 
-        #logoid {
-            margin-top: -16px;
-            padding-left: 150px;
-            padding-bottom: 15px;
-        }
 
         .layui-btn {
             margin-left: -50px;
@@ -64,9 +51,6 @@
             font-size: 15px;
         }
 
-        .verity {
-            width: 120px;
-        }
 
         .font-set {
             font-size: 13px;
@@ -82,10 +66,9 @@
 </head>
 <body>
 <form class="layui-form" action="" method="post">
-    <div class="container">
-        <button class="close" title="关闭">X</button>
+    <div class="container layui-row">
         <div class="layui-form-mid layui-word-aux">
-            <h1>投票系统登录</h1>
+            <h1 style="color:black">投票系统登录</h1>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">用户名</label>
@@ -106,7 +89,7 @@
                 <button class="layui-btn" lay-submit lay-filter="formDemo">登陆</button>
             </div>
         </div>
-        <a href="" class="font-set">忘记密码?</a> <a href="" class="font-set">立即注册</a>
+        <a href="register.jsp" class="font-set">立即注册</a>
     </div>
 </form>
 <script type="text/javascript" src="layui/layui.js"></script>
@@ -114,8 +97,6 @@
     layui.use(['form', 'layedit', 'laydate'], function () {
         var form = layui.form
             , layer = layui.layer
-            , layedit = layui.layedit
-            , laydate = layui.laydate;
 
         //监听提交
         form.on('submit(demo1)', function (data) {
