@@ -13,7 +13,6 @@ import lombok.experimental.Accessors;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Accessors(chain = true)
 public class VotingRecords {
     private int id;
     private int user_id;

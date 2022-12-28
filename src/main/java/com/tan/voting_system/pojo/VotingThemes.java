@@ -1,5 +1,9 @@
 package com.tan.voting_system.pojo;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.util.Date;
 
 /**
@@ -7,6 +11,9 @@ import java.util.Date;
  * @author TanShan
  * @date 2022/12/27 21:22
  */
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class VotingThemes {
     private int id;
     private String theme;

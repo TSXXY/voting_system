@@ -92,7 +92,6 @@
     <a href="" class="font-set">立即登录</a>
   </div>
 </form>
-<script type="text/javascript" src="layui/layui.js"></script>
 <script>
   layui.use(['form', 'layedit', 'laydate'], function () {
     var form = layui.form

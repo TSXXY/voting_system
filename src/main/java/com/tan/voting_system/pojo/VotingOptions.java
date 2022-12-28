@@ -13,7 +13,6 @@ import lombok.experimental.Accessors;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Accessors(chain = true)
 public class VotingOptions {
     private int id;
     private int voting_theme_id;

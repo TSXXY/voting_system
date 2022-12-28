@@ -1,6 +1,7 @@
 package com.tan.voting_system.dao.impl;
 
 import com.tan.voting_system.dao.UserDao;
+import com.tan.voting_system.pojo.User;
 import com.tan.voting_system.utils.BaseDao;
 
 /**
@@ -14,5 +15,11 @@ public class UserDaoImpl extends BaseDao implements UserDao {
     public int CreateUser(String username, String password) {
         String sql = "insert into users(username, password) values (?,?)";
         return update(sql,username,password);
+    }
+
+    @Override
+    public User SelectUserByName(String username) {
+        String sql = "select * from users where users.username = ?";
+        return queryForOne(User.class,sql,username);
     }
 }

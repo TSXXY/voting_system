@@ -65,7 +65,7 @@
     </style>
 </head>
 <body>
-<form class="layui-form" action="" method="post">
+<form class="layui-form" action="login?action=login" method="post">
     <div class="container layui-row">
         <div class="layui-form-mid layui-word-aux">
             <h1 style="color:black">投票系统登录</h1>
@@ -73,7 +73,7 @@
         <div class="layui-form-item">
             <label class="layui-form-label">用户名</label>
             <div class="layui-input-block">
-                <input type="text" name="title" required lay-verify="required" placeholder="请输入用户名"
+                <input type="text" name="username" required lay-verify="required" placeholder="请输入用户名"
                        autocomplete="off" class="layui-input">
             </div>
         </div>
@@ -92,7 +92,6 @@
         <a href="register.jsp" class="font-set">立即注册</a>
     </div>
 </form>
-<script type="text/javascript" src="layui/layui.js"></script>
 <script>
     layui.use(['form', 'layedit', 'laydate'], function () {
         var form = layui.form

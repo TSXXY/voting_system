@@ -30,4 +30,16 @@ public class LoginServlet extends BaseServlet {
        response.getWriter().write(s);
        request.getRequestDispatcher("login.jsp").forward(request,response);
    }
+
+   public void login(HttpServletRequest request,HttpServletResponse response) throws IOException, ServletException {
+       String username = request.getParameter("username");
+       String password = request.getParameter("password");
+
+       boolean login = userService.Login(username, password);
+       if (login){
+           request.getRequestDispatcher("home.jsp").forward(request,response);
+       }else {
+           response.getWriter().write("用户名或密码错误");
+       }
+   }
 }

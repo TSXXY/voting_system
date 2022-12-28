@@ -7,4 +7,6 @@ package com.tan.voting_system.service.impl;
 public interface UserService {
     //注册用户
     public String CreateUser(String username,String password);
+
+    public boolean Login(String username,String password);
 }
