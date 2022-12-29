@@ -17,4 +17,6 @@ public class VotingOptions {
     private int id;
     private int voting_theme_id;
     private String option_name;
+
+    private  int vote_number;
 }

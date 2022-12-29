@@ -92,6 +92,7 @@
     <a href="" class="font-set">立即登录</a>
   </div>
 </form>
+<script src="layui-v2.6.8/layui/layui.js"></script>
 <script>
   layui.use(['form', 'layedit', 'laydate'], function () {
     var form = layui.form
@@ -107,7 +108,6 @@
 
   });
 </script>
-<script src="layui-v2.6.8/layui/layui.js"></script>
 </body>
 </html>
 

@@ -8,7 +8,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>正在投票</title>
+    <base href="${pageContext.request.scheme }://${pageContext.request.serverName }:${pageContext.request.serverPort }${pageContext.request.contextPath }/ "/>
     <link rel="stylesheet" href="layui-v2.6.8/layui/css/layui.css">
 </head>
 <body>
@@ -22,14 +23,23 @@
                 <i class="layui-icon layui-icon-spread-left"></i>
             </li>
 
-            <li class="layui-nav-item layui-hide-xs"><a href="">正在投票</a></li>
-            <li class="layui-nav-item layui-hide-xs"><a href="">投票结果</a></li>
-            <li class="layui-nav-item layui-hide-xs"><a href="">发起投票</a></li>
+            <li class="layui-nav-item layui-hide-xs"><a href="home.jsp">正在投票</a></li>
+            <li class="layui-nav-item layui-hide-xs"><a href="votingHistory.jsp">历史投票</a></li>
+            <li class="layui-nav-item layui-hide-xs"><a href="createVote.jsp">发起投票</a></li>
         </ul>
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">
                 <p href="javascript:;">
-                    名字
+                    <%
+                        Cookie[] cookies = request.getCookies();
+                        String name = null;
+                        String userId = null;
+                        for (Cookie cookie : cookies) {
+                            if (cookie.getName().equals("name")) name = cookie.getValue();
+                            if (cookie.getName().equals("userid")) userId = cookie.getValue();
+                        }
+                    %>
+                    <%=name%>
                 </p>
             </li>
         </ul>
@@ -37,7 +47,12 @@
 
     <div>
         <!-- 内容主体区域 -->
-        <div style="padding: 15px;margin-top: 60px">内容主体区域。记得修改 layui.css 和 js 的路径</div>
+        <div style="padding: 15px;margin-top: 60px">
+            <table class="layui-hide" id="test" lay-filter="demo"></table>
+            <script type="text/html" id="checkboxTpl">
+                <button type="button" class="layui-btn layui-btn-normal layui-btn-sm" lay-event="update">进行投票</button>
+            </script>
+        </div>
     </div>
 
     <div class="layui-footer">
@@ -45,14 +60,15 @@
         底部固定区域
     </div>
 </div>
-<script src="./layui/layui.js"></script>
+<script src="layui-v2.6.8/layui/layui.js"></script>
 <script>
     //JS
-    layui.use(['element', 'layer', 'util'], function(){
+    layui.use(['element', 'layer', 'util',"jquery"], function(){
         var element = layui.element
             ,layer = layui.layer
             ,util = layui.util
-            ,$ = layui.$;
+            ,table = layui.table
+            ,$ = layui.jquery;
 
         //头部事件
         util.event('lay-header-event', {
@@ -72,8 +88,30 @@
             }
         });
 
+        //---------------
+        table.render({
+            elem: '#test'
+            , url: "voting?action=getConductVoting"
+            , cellMinWidth: 80
+            , cols: [[
+                  {type: 'numbers'}
+                , {field: 'id', title: 'ID', unresize: true, hide: true}
+                , {field: 'theme', title: '投票主题', templet: '#usernameTpl'}
+                , {field: 'start_time', title: '开始时间'}
+                , {field: 'end_time', title: '结束时间'}
+                , {field: '#', title: '操作', templet: '#checkboxTpl', width: 150}
+            ]]
+        });
+        table.on('tool(demo)', function (obj) {
+            let data = obj.data
+            if (obj.event === 'update'){
+                var a = document.createElement('a');
+                a.setAttribute('href', "voting?userid=<%=userId%>"+"&themeid="+data.id+ "&action=goToVote");
+                document.body.appendChild(a);
+                a.click();
+            }
+        })
     });
 </script>
-<script src="layui-v2.6.8/layui/layui.js"></script>
 </body>
 </html>

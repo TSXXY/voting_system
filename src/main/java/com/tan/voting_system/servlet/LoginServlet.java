@@ -1,14 +1,18 @@
 package com.tan.voting_system.servlet;
 
+import com.tan.voting_system.pojo.User;
+import com.tan.voting_system.pojo.VotingThemes;
 import com.tan.voting_system.service.impl.UserService;
 import com.tan.voting_system.service.impl.impl.UserServiceImpl;
 import com.tan.voting_system.utils.BaseServlet;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  * @author TanShan
@@ -35,11 +39,16 @@ public class LoginServlet extends BaseServlet {
        String username = request.getParameter("username");
        String password = request.getParameter("password");
 
-       boolean login = userService.Login(username, password);
-       if (login){
+       User login = userService.Login(username, password);
+       if (login != null){
+           response.addCookie(new Cookie("name",login.getUsername()));
+           response.addCookie(new Cookie("userid",login.getId()+""));
            request.getRequestDispatcher("home.jsp").forward(request,response);
        }else {
-           response.getWriter().write("用户名或密码错误");
+           request.getRequestDispatcher("login.jsp").forward(request,response);
        }
+
    }
+
+
 }

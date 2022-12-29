@@ -4,8 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
-
 /**
  * 投票主题
  * @author TanShan
@@ -17,6 +15,6 @@ import java.util.Date;
 public class VotingThemes {
     private int id;
     private String theme;
-    private Date start_time;
-    private Date end_time;
+    private String start_time;
+    private String end_time;
 }

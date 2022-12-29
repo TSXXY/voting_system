@@ -21,12 +21,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean Login(String username,String password) {
+    public User Login(String username,String password) {
         User user = userDao.SelectUserByName(username);
         Optional<User> user1 = Optional.ofNullable(user);
         if (user1.isPresent()) {
-            return password.equals(user.getPassword());
+            user.setPassword(null);
+            return user;
         }
-        return false;
+        return null;
     }
 }
