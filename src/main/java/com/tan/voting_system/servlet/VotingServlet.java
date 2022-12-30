@@ -113,4 +113,18 @@ public class VotingServlet extends BaseServlet {
 
 
     }
+
+    public void history(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
+        int themeid = Integer.parseInt(request.getParameter("themeid"));
+        int num = 0;
+        VotingThemes votingThemes = votingService.fondThemeById(themeid);
+        request.setAttribute("votingThemes",votingThemes);
+        List<VotingOptions> options = votingService.getOptions(themeid);
+        for (VotingOptions option : options) {
+            num+= option.getVote_number();
+        }
+        request.setAttribute("num",num);
+        request.setAttribute("options",options);
+        request.getRequestDispatcher("quryvote.jsp").forward(request,response);
+    }
 }

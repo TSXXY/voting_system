@@ -57,7 +57,6 @@
 
   <div class="layui-footer">
     <!-- 底部固定区域 -->
-    底部固定区域
   </div>
 </div>
 <script src="layui-v2.6.8/layui/layui.js"></script>
@@ -102,6 +101,16 @@
         , {field: '#', title: '操作', templet: '#checkboxTpl', width: 150}
       ]]
     });
+
+    table.on('tool(demo)', function (obj) {
+      let data = obj.data
+      if (obj.event === 'update'){
+        var a = document.createElement('a');
+        a.setAttribute('href', "voting?themeid="+data.id+ "&action=history");
+        document.body.appendChild(a);
+        a.click();
+      }
+    })
 
   });
 </script>

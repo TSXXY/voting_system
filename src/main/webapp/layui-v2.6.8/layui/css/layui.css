@@ -1767,13 +1767,13 @@ a cite {
     top: -20px;
     line-height: 18px;
     font-size: 12px;
-    color: black;
+    color: white;
 }
 
 .layui-progress-big .layui-progress-text {
     position: static;
     padding: 0 10px;
-    color: black;
+    color: white;
 }
 
 .layui-collapse {

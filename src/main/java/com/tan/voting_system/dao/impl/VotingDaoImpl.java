@@ -5,7 +5,6 @@ import com.tan.voting_system.pojo.VotingOptions;
 import com.tan.voting_system.pojo.VotingRecords;
 import com.tan.voting_system.pojo.VotingThemes;
 import com.tan.voting_system.utils.BaseDao;
-import sun.util.resources.LocaleData;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

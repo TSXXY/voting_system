@@ -31,12 +31,18 @@
             <li class="layui-nav-item">
                 <p href="javascript:;">
                     <%
-                        Cookie[] cookies = request.getCookies();
                         String name = null;
                         String userId = null;
+                        if (request.getAttribute("name") == null && request.getAttribute("userid") == null){
+                        Cookie[] cookies = request.getCookies();
                         for (Cookie cookie : cookies) {
                             if (cookie.getName().equals("name")) name = cookie.getValue();
                             if (cookie.getName().equals("userid")) userId = cookie.getValue();
+                        }
+                        }else {
+                            name =(String)request.getAttribute("name");
+                           userId = request.getAttribute("userid").toString();
+                            System.out.println(userId);
                         }
                     %>
                     <%=name%>
@@ -56,7 +62,6 @@
     </div>
 
     <div class="layui-footer">
-        <!-- 底部固定区域 -->
         底部固定区域
     </div>
 </div>

@@ -1,23 +1,21 @@
-<%@ page import="java.util.List" %>
 <%@ page import="com.tan.voting_system.pojo.VotingOptions" %>
+<%@ page import="java.util.List" %>
 <%@ page import="java.text.DecimalFormat" %><%--
   Created by IntelliJ IDEA.
   User: TS
-  Date: 2022/12/29
-  Time: 22:09
+  Date: 2022/12/30
+  Time: 13:07
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>投票</title>
-    <base href="${pageContext.request.scheme }://${pageContext.request.serverName }:${pageContext.request.serverPort }${pageContext.request.contextPath }/ "/>
-    <link rel="stylesheet" href="layui-v2.6.8/layui/css/layui.css">
-    <style>
-    </style>
+    <title>查看投票结果</title>
+  <base href="${pageContext.request.scheme }://${pageContext.request.serverName }:${pageContext.request.serverPort }${pageContext.request.contextPath }/ "/>
+  <link rel="stylesheet" href="layui-v2.6.8/layui/css/layui.css">
 </head>
 <body>
-<div class="layui-layout layui-layout-admin">
+<div class="layui-layout layui-layout-admin" style="width:70%;margin:80px 0 0 auto">
     <div class="layui-header">
         <div class="layui-logo layui-hide-xs layui-bg-black">投票系统</div>
         <!-- 头部区域（可配合layui 已有的水平导航） -->
@@ -47,11 +45,8 @@
         </ul>
     </div>
 
-    <div class="layui-bg-gray">
+    <div class="layui-bg-gray" >
         <!-- 内容主体区域 -->
-        <form class="layui-form"
-              action="voting?action=vote&themeId=<%=request.getParameter("themeid")%>&userid=<%=request.getParameter("userid")%>"
-              style="width:70%;margin:80px 0 0 auto" method="post">
             <h1>${votingThemes.theme}</h1>
             <%
                 List<VotingOptions> options = (List<VotingOptions>) request.getAttribute("options");
@@ -63,40 +58,20 @@
                 <div class="layui-col-md6">
                     <div class="layui-progress layui-progress-big" lay-showpercent="true">
                         <div class="layui-progress-bar layui-bg-black"
-                             lay-percent="<%=decimalFormat.format(Double.isNaN(((double )option.getVote_number()/(double ) num)*100)?0:(((double )option.getVote_number()/(double ) num)*100))%>%"></div>
+                             lay-percent="<%=decimalFormat.format((((double )option.getVote_number()/(double ) num)*100))%>%"></div>
                     </div>
                 </div>
                 <div class="layui-col-md6">
-                    <input type="radio" value="<%=option.getId()%>" name="optionid"
-                           title="<%=option.getOption_name()%>">
+                    <p style="color: black"><%=option.getOption_name()%></p>
                 </div>
             </div>
             <%}%>
-            <%
-                boolean isVote = (boolean) request.getAttribute("isVote");
-                if (!isVote) {%>
-            <div class="layui-form-item">
-                <div class="layui-input-block">
-                    <button class="layui-btn" lay-submit lay-filter="formDemo">投票</button>
-                </div>
-            </div>
-            <%} else {%>
-            <div class="layui-form-item">
-                <div class="layui-input-block">
-                    <p class="layui-btn layui-btn-disabled">你已经投过票啦</p>
-                </div>
-            </div>
-            <%}%>
-        </form>
     </div>
 
     <div class="layui-footer">
         <!-- 底部固定区域 -->
     </div>
 </div>
-
-
 <script src="layui-v2.6.8/layui/layui.js"></script>
 </body>
 </html>
-

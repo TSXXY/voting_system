@@ -43,6 +43,8 @@ public class LoginServlet extends BaseServlet {
        if (login != null){
            response.addCookie(new Cookie("name",login.getUsername()));
            response.addCookie(new Cookie("userid",login.getId()+""));
+           request.setAttribute("name",login.getUsername());
+           request.setAttribute("userid",login.getId());
            request.getRequestDispatcher("home.jsp").forward(request,response);
        }else {
            request.getRequestDispatcher("login.jsp").forward(request,response);
